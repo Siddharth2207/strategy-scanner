@@ -19,12 +19,12 @@ async function getGas(txHash: any){
 async function scanData(){  
 
 
+    // sg to query
+     const sgUrl = "https://api.thegraph.com/subgraphs/name/siddharth2207/nhsobv3npe2" 
 
-     const sgUrl = "https://api.thegraph.com/subgraphs/name/siddharth2207/polytrade"  
-    //  const sgUrl = "https://api.thegraph.com/subgraphs/name/siddharth2207/nhsbinomialstrat" 
-
+     // include order id in query
      let query = `{
-          takeOrderEntities(orderBy : timestamp, orderDirection :asc, first : 1000,where: {order_: {id_in: ["0xcfd91f5980def6df7b0c4aac45ce395d6ed1273fb2444fa621bceb4c9d1a4ee9","0xdbf7a02b69ef8bf8af5eba280e823c5b8b9f32b278579f1392ff99600283cd58"]}}) {
+          takeOrderEntities(orderBy : timestamp, orderDirection :asc, first: 1000,where: {order_: {id_in: ["0x51e6e60cdba02cef63c65917cdb594179e790bbd749d52d5efa5b4ef70c4e4c7","0xe4cda2a5c590002bf8a260ec65b65cb9ca82a78ffd60b1056f665d89e387a3bb"]}}) {
         context{
         id
         timestamp
@@ -45,10 +45,10 @@ async function scanData(){
         { headers: { "Content-Type": "application/json" } }
      )  
 
-     const takeOrderEntities = result.data.data.takeOrderEntities 
+     const takeOrderEntities = result.data.data.takeOrderEntities  
+
      
-     const filePath = "./data/polytrade_bounty_strat.csv"
-    // const filePath = "./data/nhs.csv"
+     const filePath = "./data/nhs_vol_strat.csv"
 
      const stream = fs.createWriteStream(filePath, {flags: "a"});  
 
@@ -105,4 +105,4 @@ async function scanData(){
 
      
 } 
-scanData() 
+scanData()  
