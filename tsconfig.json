@@ -1,0 +1,12 @@
+{
+    "include": ["./scanArb.ts"],
+    "exclude": ["node_modules/*"],
+    "compilerOptions": {
+      "target": "ES2020",
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true
+    },
+    "files": ["hardhat.config.ts"]
+  }
+  
